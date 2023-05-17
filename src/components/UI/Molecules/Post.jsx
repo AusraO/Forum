@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 import UsersContext from '../../../contexts/UsersContext';
 import PostsContext from '../../../contexts/PostsContext';
+import { Link } from 'react-router-dom';
 
 const StyledPostDiv = styled.div`
   border: 1px solid black;
@@ -34,6 +35,9 @@ const Post = ({ data }) => {
           }) }
         >Delete Post</button>
       }
+       <Link to={`/posts/${data.id}`}>
+            View Details
+          </Link>
       { users.length ?
         <StyledUserInfoDiv>
           <img src={user.avatarURL} alt="user avatar" />

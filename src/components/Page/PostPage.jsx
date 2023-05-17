@@ -3,16 +3,20 @@ import { useContext } from 'react';
 import PostsContext from '../../contexts/PostsContext';
 
 const PostPage = () => {
-  const { postId } = useParams();
-  const { posts } = useContext(PostsContext);
-
-  const post = posts.find((post) => post.id === postId);
+    const { postId } = useParams();
+    const { posts } = useContext(PostsContext);
+  
+    const selectedPost = posts.find((post) => post.id.toString() === postId.toString());
+  
+    if (!selectedPost) {
+      return <div>Post not found!</div>;
+    }
 
   return (
     <div>
-      <h2>{post.title}</h2>
-      <p>{post.content}</p>
-      {/* Additional post details */}
+      <h2>{selectedPost.title}</h2>
+      <p>{selectedPost.content}</p>
+      
     </div>
   );
 };
