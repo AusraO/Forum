@@ -20,24 +20,26 @@ const StyledMain = styled.main`
 const Home = () => {
 
   const { posts } = useContext(PostsContext);
-//   const { currentUser } = useContext(UsersContext);
+  const { currentUser } = useContext(UsersContext);
+ 
 
   return (
     <StyledMain>
-      {/* {
+      {
         currentUser &&
         <Link to="/posts/newPost">
           <button>Add New Post</button>
         </Link>
-      } */}
+      }
       <h1>All Posts</h1>
-      <div>
+     <div>
         {
-          posts.map(post => 
-            <Post 
-              key={post.id}
-              data={post}
-            />  
+          posts.map(post => (
+            <Link key={post.id} to={(`/posts/${post.id}`)}>
+          
+            <Post data={post}/>  
+            </Link>
+          )
           )
         }
       </div>
