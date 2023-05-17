@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
 import styled from "styled-components";
 import { useContext } from "react";
-import UsersContext from "../../../contexts/UsersContext";
+import UsersContext from "../../contexts/UsersContext";
 import { Link , useNavigate} from "react-router-dom";
 
 
