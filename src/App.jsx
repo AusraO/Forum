@@ -7,6 +7,8 @@ import { Route, Routes } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import Login from './components/Page/Login';
 import Register from './components/Page/Register';
+import Profile from './components/Page/Profile';
+import About from './components/Page/About';
 import Footer from './components/UI/Molecules/Footer';
 
 const App = () => {
