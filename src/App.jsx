@@ -13,6 +13,7 @@ import Activity from './components/Page/Activity';
 import Footer from './components/UI/Footer';
 import Home from './components/Page/Home';
 import NewPost from './components/Page/NewPost';
+import PostPage from './components/Page/PostPage';
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
           <NewPost /> :
           <Navigate to="/login" />
         } />
+         <Route path="/posts/:postId" element={<PostPage />} />
         <Route path="/register" element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/home' element={<Home />} />
