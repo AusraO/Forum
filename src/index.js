@@ -5,10 +5,12 @@ import App from './App';
 import { UsersProvider } from './contexts/UsersContext';
 import { NewUsersProvider } from './contexts/NewUsersContext';
 import { PostsProvider } from './contexts/PostsContext';
+import { BrowserRouter } from 'react-router-dom';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+    <BrowserRouter>
     <PostsProvider>
     <NewUsersProvider>
  <UsersProvider>
@@ -16,4 +18,5 @@ root.render(
     </UsersProvider>
     </NewUsersProvider>
     </PostsProvider>
+    </BrowserRouter>
 );
