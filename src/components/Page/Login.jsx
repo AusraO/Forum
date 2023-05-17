@@ -55,7 +55,7 @@ const Login = () => {
     const loggedInUser = users.find(user => user.userName === formInputs.userName && user.password === formInputs.password);
     if(loggedInUser){
       setCurrentUser(loggedInUser);
-      navigate('/dogs');
+      navigate('/home');
     } else {
       setFailedLogIn(true);
     }
