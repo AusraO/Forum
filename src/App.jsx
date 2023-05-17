@@ -12,6 +12,7 @@ import About from './components/Page/About';
 import Activity from './components/Page/Activity';
 import Footer from './components/UI/Footer';
 import Home from './components/Page/Home';
+import NewPost from './components/Page/NewPost';
 
 
 const App = () => {
@@ -32,6 +33,11 @@ const App = () => {
           currentUser ?
             <Profile /> :
             <Navigate to="/login" />
+        } />
+         <Route path="/posts/newPost" element={
+          currentUser ?
+          <NewPost /> :
+          <Navigate to="/login" />
         } />
         <Route path="/register" element={<Register />} />
         <Route path='/login' element={<Login />} />
