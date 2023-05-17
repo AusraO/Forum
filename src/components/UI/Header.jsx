@@ -47,20 +47,57 @@ button{
 
 
 const Header = () => {
+  const { currentUser, setCurrentUser } = useContext(UsersContext);
 
- 
+  const navigate = useNavigate();
+
   return (
     <>
-  
+
       <HeaderStyled>
-        <img src="https://e7.pngegg.com/pngimages/273/915/png-clipart-school-psychology-psychologist-social-psychology-health-psychology-psicologa-orange-logo.png" alt="logo"/>
-       <button>Home</button>
-       <button>About</button>
-       <button>My activity</button>
-       <button>My profile</button>
-<img src="https://cdn-icons-png.flaticon.com/512/994/994615.png" alt="user avatar"/>
-<p>User name</p>
-       <button>Log out</button>
+      {
+          !currentUser &&
+          <Link to="/about"><img src="https://e7.pngegg.com/pngimages/273/915/png-clipart-school-psychology-psychologist-social-psychology-health-psychology-psicologa-orange-logo.png" alt="logo" /></Link>
+        }
+        {
+          currentUser &&
+          <Link to="/home"><img src="https://e7.pngegg.com/pngimages/273/915/png-clipart-school-psychology-psychologist-social-psychology-health-psychology-psicologa-orange-logo.png" alt="logo" /></Link>
+        }
+        
+        <button>Home</button>
+        <button>About</button>
+        <img src="https://cdn-icons-png.flaticon.com/512/994/994615.png" alt="user avatar" />
+        {
+          !currentUser ?
+            <>
+              <Link to={'/login'}> <button >Log in</button></Link>
+              <Link to="/register"> <button>Register</button></Link>
+            </> :
+            <>
+              {
+                currentUser &&
+                <Link to="/activity"><button>My activity</button></Link>
+              }
+                    {
+                currentUser &&
+                <Link to="/profile"><button>My profile</button></Link>
+              }
+              <div>
+                <img style={{ width: "70px", height: "auto" }} src={currentUser.avatarURL} alt="user avatar" />
+                <p>{currentUser.userName}</p>
+
+                <button
+                  onClick={() => {
+                    setCurrentUser(null);
+                    navigate('/');
+                  }}
+                >
+                  Logout
+                </button>
+              </div>
+            </>
+        }
+
 
 
       </HeaderStyled>
