@@ -11,6 +11,7 @@ import Profile from './components/Page/Profile';
 import About from './components/Page/About';
 import Activity from './components/Page/Activity';
 import Footer from './components/UI/Footer';
+import Home from './components/Page/Home';
 
 
 const App = () => {
@@ -34,6 +35,8 @@ const App = () => {
         } />
         <Route path="/register" element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/about' element={<About />} />
         <Route path='*' element={<><h1> Nothing to see here ! </h1><img src='https://cdn.retrojunk.com/article-images/607_244b0c93b2.jpg' alt='shy duck'/></>} />
       </Routes>
 
