@@ -9,7 +9,9 @@ import Login from './components/Page/Login';
 import Register from './components/Page/Register';
 import Profile from './components/Page/Profile';
 import About from './components/Page/About';
-import Footer from './components/UI/Molecules/Footer';
+import Activity from './components/Page/Activity';
+import Footer from './components/UI/Footer';
+
 
 const App = () => {
 

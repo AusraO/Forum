@@ -23,6 +23,14 @@
       "isBlocked": false,
       "password": "ausra",
       "avatarURL": "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/1200px-Patrick_Star.svg.png"
+    },
+    {
+      "userName": "aaa",
+      "avatarURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTcvZ9mhg2ARTYIM_CcO7Wi1NEFNHMuR9YyQ&usqp=CAU",
+      "email": "aa@aa",
+      "password": "!1Aaaaaaa",
+      "passwordConfirm": "!1Aaaaaaa",
+      "id": "622a5a20-6661-45a2-aa73-741d93cb53fe"
     }
   ]
 }
