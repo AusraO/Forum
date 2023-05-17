@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userName": "admin",
+      "role": "admin",
+      "isBlocked": false,
+      "password": "admin",
+      "avatarURL": "https://www.clipartmax.com/png/middle/319-3191274_male-avatar-admin-profile.png"
+    },
+    {
+      "id": 2,
+      "userName": "user",
+      "role": "user",
+      "isBlocked": false,
+      "password": "user",
+      "avatarURL": "https://static.wikia.nocookie.net/cartoons/images/e/ed/Profile_-_SpongeBob_SquarePants.png"
+    },
+    {
+      "id": 3,
+      "userName": "ausra",
+      "role": "user",
+      "isBlocked": false,
+      "password": "ausra",
+      "avatarURL": "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/1200px-Patrick_Star.svg.png"
+    }
+  ]
+}
