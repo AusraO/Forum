@@ -14,7 +14,7 @@
       "role": "user",
       "isBlocked": false,
       "password": "user",
-      "avatarURL": "https://static.wikia.nocookie.net/cartoons/images/e/ed/Profile_-_SpongeBob_SquarePants.png"
+      "avatarURL": "https://img.favpng.com/6/17/15/rubber-duck-cartoon-avatar-png-favpng-kKz7Lgv3zu0m8WdGXRWfg45hN.jpg"
     },
     {
       "id": 3,
@@ -22,7 +22,41 @@
       "role": "user",
       "isBlocked": false,
       "password": "ausra",
-      "avatarURL": "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/1200px-Patrick_Star.svg.png"
+      "avatarURL": "https://img.freepik.com/premium-photo/yellow-rubber-duck-isolated-white-background_488220-47949.jpg"
+    },
+    {
+      "userName": "aaa",
+      "avatarURL": "https://3076592524-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/spaces%2F-MiIkRK_o3RBhZzUkrzr%2Favatar-1630271589036.png",
+      "email": "aa@aa",
+      "password": "!1Aaaaaaa",
+      "passwordConfirm": "!1Aaaaaaa",
+      "id": "622a5a20-6661-45a2-aa73-741d93cb53fe"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "userId": 2,
+      "title": "Where the duck am I???",
+      "content": "I think I am lost, can anybody tell me where to go??"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "title": "I've had an argument with my duck. Please recomend good psychologist..",
+      "content": "I am really depressed right now.. He said some things, i've done some things.. Idk how to fix it now.."
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "title": "I think my rubber duck is dead.. Should I call police?",
+      "content": "He is not responding to me for more than an hour! I hear no heartbeat! Who could have killed him?"
+    },
+    {
+      "id": "a8814ab4-1e24-4857-887a-63dc1004b52e",
+      "userId": 2,
+      "title": "What is the best rubber duck breeder in town?",
+      "content": "Looking for the best breeder in Vilnius. I want to participate in duck shows with my new duck friend. I will give it good home, I swear."
     }
   ]
 }

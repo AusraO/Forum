@@ -10,7 +10,7 @@ const HeaderStyled = styled.header`
     display: flex;
     justify-content: space-around;
     gap:20px; 
-    background-color:  rgba(11, 7, 13, 1);
+    background-color: #d4992a;
     align-items: center;
     color:white;
     >div{
@@ -57,16 +57,16 @@ const Header = () => {
       <HeaderStyled>
       {
           !currentUser &&
-          <Link to="/about"><img src="https://e7.pngegg.com/pngimages/273/915/png-clipart-school-psychology-psychologist-social-psychology-health-psychology-psicologa-orange-logo.png" alt="logo" /></Link>
+          <Link to="/about"><img src="https://static.vecteezy.com/system/resources/previews/017/476/523/original/rubber-duck-logo-flat-design-logo-illustration-logo-template-isolated-on-white-background-vector.jpg" alt="logo" /></Link>
         }
         {
           currentUser &&
-          <Link to="/home"><img src="https://e7.pngegg.com/pngimages/273/915/png-clipart-school-psychology-psychologist-social-psychology-health-psychology-psicologa-orange-logo.png" alt="logo" /></Link>
+          <Link to="/home"><img src="https://static.vecteezy.com/system/resources/previews/017/476/523/original/rubber-duck-logo-flat-design-logo-illustration-logo-template-isolated-on-white-background-vector.jpg" alt="logo" /></Link>
         }
         
-        <button>Home</button>
-        <button>About</button>
-        <img src="https://cdn-icons-png.flaticon.com/512/994/994615.png" alt="user avatar" />
+        <Link to="/home"><button>Home</button></Link>
+        <Link to="/about"><button>About</button></Link>
+     
         {
           !currentUser ?
             <>
