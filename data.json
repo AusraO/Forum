@@ -37,22 +37,26 @@
     {
       "id": 1,
       "userId": 2,
-      "title": "Where the duck am I???"
+      "title": "Where the duck am I???",
+      "content": "I think I am lost, can anybody tell me where to go??"
     },
     {
       "id": 3,
       "userId": 3,
-      "title": "I've had an argument with my duck. Please recomend good psychologist.."
+      "title": "I've had an argument with my duck. Please recomend good psychologist..",
+      "content": "I am really depressed right now.. He said some things, i've done some things.. Idk how to fix it now.."
     },
     {
       "id": 4,
       "userId": 1,
-      "title": "I think my rubber duck is dead.. Should I call police?"
+      "title": "I think my rubber duck is dead.. Should I call police?",
+      "content": "He is not responding to me for more than an hour! I hear no heartbeat! Who could have killed him?"
     },
     {
       "id": "a8814ab4-1e24-4857-887a-63dc1004b52e",
       "userId": 2,
-      "title": "What is the best rubber duck breeder in town?"
+      "title": "What is the best rubber duck breeder in town?",
+      "content": "Looking for the best breeder in Vilnius. I want to participate in duck shows with my new duck friend. I will give it good home, I swear."
     }
   ]
 }

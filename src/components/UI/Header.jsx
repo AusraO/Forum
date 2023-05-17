@@ -66,7 +66,7 @@ const Header = () => {
         
         <Link to="/home"><button>Home</button></Link>
         <Link to="/about"><button>About</button></Link>
-        <img src="https://cdn-icons-png.flaticon.com/512/994/994615.png" alt="user avatar" />
+     
         {
           !currentUser ?
             <>
