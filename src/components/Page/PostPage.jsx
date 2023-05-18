@@ -3,7 +3,7 @@ import { useContext, useState, useEffect } from 'react';
 import PostsContext from '../../contexts/PostsContext';
 import styled from 'styled-components';
 import UsersContext from '../../contexts/UsersContext';
-// import { addReply} from '../../contexts/RepliesContext';
+import AddRepliesContext from '../../contexts/AddReplyContext';
 import RepliesContext from '../../contexts/RepliesContext';
 import Reply from '../UI/Molecules/Reply';
 
@@ -28,6 +28,7 @@ const PostPage = () => {
   const { posts } = useContext(PostsContext);
   const { users, currentUser } = useContext(UsersContext); 
   const { replies } = useContext(RepliesContext); 
+  const {addReply}= useContext(AddRepliesContext)
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
   const [selectedPost, setSelectedPost] = useState(null);
@@ -93,21 +94,21 @@ const PostPage = () => {
     }
   };
 
-  // const handleReplySubmit = (e) => {
-  //   e.preventDefault();
-  //   if (currentUser && replyContent.trim() !== "") {
-  //     const newReply = {
-  //       id: replies.length + 1, // Generate a unique ID for the new reply
-  //       userId: currentUser.id,
-  //       questionId: postId,
-  //       content: replyContent,
-  //       likes: 0,
-  //       dislikes: 0,
-  //     };
-  //     addReply(newReply);
-  //     setReplyContent("");
-  //   }
-  // };
+  const handleReplySubmit = (e) => {
+    e.preventDefault();
+    if (currentUser && replyContent.trim() !== "") {
+      const newReply = {
+        id: replies.length + 1, // Generate a unique ID for the new reply
+        userId: currentUser.id,
+        questionId: postId,
+        content: replyContent,
+        likes: 0,
+        dislikes: 0,
+      };
+      addReply(newReply);
+      setReplyContent("");
+    }
+  };
 
   return (
     <>
@@ -144,7 +145,7 @@ const PostPage = () => {
       </StyledPostDiv>
 
       <form 
-      // onSubmit={handleReplySubmit}
+      onSubmit={handleReplySubmit}
       >
         <textarea
           value={replyContent}
