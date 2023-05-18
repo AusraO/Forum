@@ -38,35 +38,67 @@
       "id": 1,
       "userId": 2,
       "title": "Where the duck am I???",
-      "content": "I think I am lost, can anybody tell me where to go??"
+      "content": "I think I am lost, can anybody tell me where to go??",
+      "likes": 5,
+      "dislikes": 2
     },
     {
       "id": 3,
       "userId": 3,
       "title": "I've had an argument with my duck. Please recomend good psychologist..",
-      "content": "I am really depressed right now.. He said some things, i've done some things.. Idk how to fix it now.."
+      "content": "I am really depressed right now.. He said some things, i've done some things.. Idk how to fix it now..",
+      "likes": 5,
+      "dislikes": 2
     },
     {
       "id": 4,
       "userId": 1,
       "title": "I think my rubber duck is dead.. Should I call police?",
-      "content": "He is not responding to me for more than an hour! I hear no heartbeat! Who could have killed him?"
+      "content": "He is not responding to me for more than an hour! I hear no heartbeat! Who could have killed him?",
+      "likes": 5,
+      "dislikes": 2
     },
     {
       "id": "a8814ab4-1e24-4857-887a-63dc1004b52e",
       "userId": 2,
       "title": "What is the best rubber duck breeder in town?",
-      "content": "Looking for the best breeder in Vilnius. I want to participate in duck shows with my new duck friend. I will give it good home, I swear."
+      "content": "Looking for the best breeder in Vilnius. I want to participate in duck shows with my new duck friend. I will give it good home, I swear.",
+      "likes": 5,
+      "dislikes": 2
+    }
+  ],
+  "replies": [
+    {
+      "id": 1,
+      "userId": 3,
+      "questionId":1,
+      "content": "You are at the forum of the ducks of course!",
+      "likes": 3,
+      "dislikes": 2
     },
     {
-      "id": "b140b40e-b88c-4e82-8b3d-40eac633a7e3",
-      "userId": 1,
-      "title": "kk"
+      "id": 2,
+      "userId": 2,
+      "questionId":2,
+      "content": "Did you say sorry?",
+      "likes": 6,
+      "dislikes": 0
     },
     {
-      "id": "c7b68551-7dbf-4ff2-b44d-04237ee4a945",
+      "id":3,
+      "userId": 3,
+      "questionId":1,
+      "content": "Are you joking????",
+      "likes": 5,
+      "dislikes": 23
+    },
+    {
+      "id": 4,
       "userId": 1,
-      "title": "jhjkhj"
+      "questionId":3,
+      "content": "You definitely shouldn't call the police. Just hide the body in the forest and run to Cuba",
+      "likes": 7,
+      "dislikes": 7
     }
   ]
 }
