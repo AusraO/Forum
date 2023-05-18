@@ -2,6 +2,12 @@ import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import PostsContext from '../../contexts/PostsContext';
 
+
+
+
+
+
+
 const PostPage = () => {
     const { postId } = useParams();
     const { posts } = useContext(PostsContext);
