@@ -6,7 +6,7 @@ import { UsersProvider } from './contexts/UsersContext';
 import { NewUsersProvider } from './contexts/NewUsersContext';
 import { PostsProvider } from './contexts/PostsContext';
 import { BrowserRouter } from 'react-router-dom';
-import RepliesProvider from './contexts/RepliesContext';
+import {RepliesProvider} from './contexts/RepliesContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

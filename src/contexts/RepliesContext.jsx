@@ -1,19 +1,60 @@
-import React, { createContext, useState } from "react";
+import { createContext, useReducer, useEffect } from "react";
 
-export const RepliesContext = createContext();
-
-const RepliesContextProvider = (props) => {
-  const [replies, setReplies] = useState([]);
-
-  const addReply = (newReply) => {
-    setReplies([...replies, newReply]);
-  };
-
-  return (
-    <RepliesContext.Provider value={{ replies, addReply }}>
-      {props.children}
-    </RepliesContext.Provider>
-  );
+const RepliesContext = createContext();
+const RepliesActionTypes = {
+  get: 'get_all_replies',
+  add: 'add_new_reply',
+  delete: 'remove_specific_reply'
 };
 
-export default RepliesContextProvider;
+const reducer = (state, action) => {
+  switch(action.type){
+    case RepliesActionTypes.get:
+      return action.data;
+    case RepliesActionTypes.add:
+      fetch(`http://localhost:8080/replies`, {
+        method: "POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify(action.data)
+      });
+      return [ ...state, action.data ];
+    case RepliesActionTypes.delete:
+      fetch(`http://localhost:8080/replies/${action.id}`, {
+        method: "DELETE"
+      });
+      return state.filter(el => el.id !== action.id);
+    default:
+      return state;
+  }
+}
+
+const RepliesProvider = ({ children }) => {
+
+  const [replies, setReplies] = useReducer(reducer, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/replies`)
+      .then(res => res.json())
+      .then(data => setReplies({
+        type: RepliesActionTypes.get,
+        data: data
+      }));
+  }, []);
+
+  return (
+    <RepliesContext.Provider
+      value={{
+        replies,
+        setReplies,
+        RepliesActionTypes
+      }}
+    >
+      { children }
+    </RepliesContext.Provider>
+  );
+}
+ 
+export { RepliesProvider };
+export default RepliesContext;
