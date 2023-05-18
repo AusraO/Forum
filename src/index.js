@@ -6,10 +6,12 @@ import { UsersProvider } from './contexts/UsersContext';
 import { NewUsersProvider } from './contexts/NewUsersContext';
 import { PostsProvider } from './contexts/PostsContext';
 import { BrowserRouter } from 'react-router-dom';
+import { RepliesContext } from './contexts/RepliesContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+    <RepliesContext>
     <BrowserRouter>
     <PostsProvider>
     <NewUsersProvider>
@@ -19,4 +21,5 @@ root.render(
     </NewUsersProvider>
     </PostsProvider>
     </BrowserRouter>
+    </RepliesContext>
 );
