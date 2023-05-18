@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import UsersContext from '../../contexts/UsersContext';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { RepliesContext } from '../../contexts/RepliesContext';
 
 const StyledPostDiv = styled.div`
   padding: 0 50px;
@@ -38,6 +39,7 @@ const PostPage = () => {
   const [userAction, setUserAction] = useState(null);
   const [replyContent, setReplyContent] = useState("");
   const [postReplies, setPostReplies] = useState([]);
+  
 
   useEffect(() => {
     const post = posts.find((post) => post.id.toString() === postId.toString());
