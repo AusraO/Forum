@@ -1,12 +1,12 @@
 import React, { createContext, useState } from 'react';
 
 const AddRepliesContext = createContext({
-  replies: [],
+  replies2: [],
   addReply: () => {},
 });
 
 export const AddRepliesProvider = ({ children }) => {
-  const [replies, setReplies] = useState([]);
+  const [replies2, setReplies] = useState([]);
 
   const addReply = async (newReply) => {
     try {
@@ -33,7 +33,7 @@ export const AddRepliesProvider = ({ children }) => {
   };
 
   return (
-    <AddRepliesContext.Provider value={{ replies, addReply }}>
+    <AddRepliesContext.Provider value={{ replies2, addReply }}>
       {children}
     </AddRepliesContext.Provider>
   );
