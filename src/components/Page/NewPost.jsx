@@ -10,7 +10,8 @@ const NewPost = () => {
     const { currentUser } = useContext(UsersContext);
     const { setPosts, PostsActionTypes } = useContext(PostsContext);
     const [formInputs, setFormInputs] = useState({
-        title: ''
+        title: '',
+        description: ''
     });
 
     const inputHandler = e => {
@@ -25,7 +26,8 @@ const NewPost = () => {
         const newPost = {
             id: generateId(),
             userId: currentUser.id,
-            title: formInputs.title
+            title: formInputs.title,
+            description: formInputs.description
         }
         setPosts({
             type: PostsActionTypes.add,
