@@ -44,8 +44,10 @@ const Reply = ({ data }) => {
         setLikes(likes - 1);
         setLiked(false);
         setReplies({
-          type: RepliesActionTypes.unlike,
+          type: RepliesActionTypes.updateLikes,
           id: data.id,
+          likes: likes - 1,
+          dislikes: dislikes,
         });
       } else {
         if (disliked) {
@@ -55,8 +57,10 @@ const Reply = ({ data }) => {
         setLikes(likes + 1);
         setLiked(true);
         setReplies({
-          type: RepliesActionTypes.like,
+          type: RepliesActionTypes.updateLikes,
           id: data.id,
+          likes: likes + 1,
+          dislikes: dislikes,
         });
       }
     }
@@ -68,8 +72,10 @@ const Reply = ({ data }) => {
         setDislikes(dislikes - 1);
         setDisliked(false);
         setReplies({
-          type: RepliesActionTypes.undislike,
+          type: RepliesActionTypes.updateLikes,
           id: data.id,
+          likes: likes,
+          dislikes: dislikes - 1,
         });
       } else {
         if (liked) {
@@ -79,8 +85,10 @@ const Reply = ({ data }) => {
         setDislikes(dislikes + 1);
         setDisliked(true);
         setReplies({
-          type: RepliesActionTypes.dislike,
+          type: RepliesActionTypes.updateLikes,
           id: data.id,
+          likes: likes,
+          dislikes: dislikes + 1,
         });
       }
     }

@@ -65,12 +65,6 @@
       "content": "Looking for the best breeder in Vilnius. I want to participate in duck shows with my new duck friend. I will give it good home, I swear.",
       "likes": 5,
       "dislikes": 2
-    },
-    {
-      "id": "0f454eb4-93d3-487d-9b47-6a0770723ba1",
-      "userId": 1,
-      "title": "wwwwwwwwwwwwwwww",
-      "description": "eeeeeeeeeeeeeeeeeee"
     }
   ],
   "replies": [
@@ -79,8 +73,8 @@
       "userId": 3,
       "questionId": 1,
       "content": "You are at the forum of the ducks of course!",
-      "likes": 3,
-      "dislikes": 2
+      "likes": 10,
+      "dislikes": 9
     },
     {
       "id": 2,
@@ -95,8 +89,8 @@
       "userId": "622a5a20-6661-45a2-aa73-741d93cb53fe",
       "questionId": 1,
       "content": "Are you joking????",
-      "likes": 5,
-      "dislikes": 23
+      "likes": 6,
+      "dislikes": 25
     },
     {
       "id": 4,
@@ -123,34 +117,26 @@
       "dislikes": 0
     },
     {
-      "id": 18,
+      "id": 11,
       "userId": 1,
-      "questionId": "1",
-      "content": "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+      "questionId": "4",
+      "content": "tryyttttt",
       "likes": 0,
       "dislikes": 0
     },
     {
       "id": 8,
       "userId": 1,
-      "questionId": "0f454eb4-93d3-487d-9b47-6a0770723ba1",
-      "content": "hghh",
+      "questionId": "4",
+      "content": "sddd",
       "likes": 0,
       "dislikes": 0
     },
     {
       "id": 9,
       "userId": 1,
-      "questionId": "3",
-      "content": "ddddddddddddd",
-      "likes": 0,
-      "dislikes": 0
-    },
-    {
-      "id": 10,
-      "userId": 1,
-      "questionId": "1",
-      "content": "eereere",
+      "questionId": "4",
+      "content": "llllllllllllllllllllllllllllllllll",
       "likes": 0,
       "dislikes": 0
     }
