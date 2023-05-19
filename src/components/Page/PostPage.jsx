@@ -128,7 +128,7 @@ const PostPage = () => {
           <span>{dislikes}</span>
         </div>
         <h2>{selectedPost.title}</h2>
-        <p>{selectedPost.content}</p>
+        <p>{selectedPost.description}</p>
       </StyledPostDiv>
 
       <StyledPostDiv>

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import styled from 'styled-components';
 import UsersContext from '../../../contexts/UsersContext';
 import RepliesContext from '../../../contexts/RepliesContext';
@@ -11,42 +11,112 @@ const StyledUserInfoDiv = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-  >img{
+  > img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
   }
 `;
+const StyledLikesDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+`;
+const StyledLikeButton = styled.button`
+  color: ${({ active }) => (active ? 'blue' : 'black')};
+  font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
+`;
 
 const Reply = ({ data }) => {
-
   const { users, currentUser } = useContext(UsersContext);
-  const { setReplies, RepliesActionTypes } = useContext(RepliesContext);
-  const user = users.find(el => el.id === data.userId);
+  const { replies, setReplies, RepliesActionTypes } = useContext(RepliesContext);
+  const user = users.find((el) => el.id === data.userId);
+
+  const [liked, setLiked] = useState(false);
+  const [disliked, setDisliked] = useState(false);
+  const [likes, setLikes] = useState(data.likes);
+  const [dislikes, setDislikes] = useState(data.dislikes);
+
+  const handleLike = () => {
+    if (currentUser) {
+      if (liked) {
+        setLikes(likes - 1);
+        setLiked(false);
+        setReplies({
+          type: RepliesActionTypes.unlike,
+          id: data.id,
+        });
+      } else {
+        if (disliked) {
+          setDislikes(dislikes - 1);
+          setDisliked(false);
+        }
+        setLikes(likes + 1);
+        setLiked(true);
+        setReplies({
+          type: RepliesActionTypes.like,
+          id: data.id,
+        });
+      }
+    }
+  };
+
+  const handleDislike = () => {
+    if (currentUser) {
+      if (disliked) {
+        setDislikes(dislikes - 1);
+        setDisliked(false);
+        setReplies({
+          type: RepliesActionTypes.undislike,
+          id: data.id,
+        });
+      } else {
+        if (liked) {
+          setLikes(likes - 1);
+          setLiked(false);
+        }
+        setDislikes(dislikes + 1);
+        setDisliked(true);
+        setReplies({
+          type: RepliesActionTypes.dislike,
+          id: data.id,
+        });
+      }
+    }
+  };
 
   return (
     <StyledPostDiv>
-      {
-        currentUser && data.userId === currentUser.id &&
-        <button
-          onClick = { () => setReplies({
-            type: RepliesActionTypes.delete,
-            id: data.id
-          }) }
-        >Delete Post</button>
-      }
-      
-      { users.length ?
-        <StyledUserInfoDiv>
-          <img src={user.avatarURL} alt="user avatar" />
-          <p>{user.userName}</p>
-        </StyledUserInfoDiv>: <p>loading user...</p>
-      }
-      <div>
-        <h3>{data.content}</h3>
-      </div>
+      {currentUser && data.userId === currentUser.id && (
+        <button onClick={() => setReplies({ type: RepliesActionTypes.delete, id: data.id })}>
+          Delete Post
+        </button>
+      )}
+
+      {users.length ? (
+        <>
+          <StyledUserInfoDiv>
+            <img src={user.avatarURL} alt="user avatar" />
+            <p>{user.userName}</p>
+          </StyledUserInfoDiv>
+          <div>
+            <h3>{data.content}</h3>
+          </div>
+          <StyledLikesDiv>
+            <StyledLikeButton active={liked} onClick={handleLike}>
+              Like {likes}
+            </StyledLikeButton>
+            <StyledLikeButton active={disliked} onClick={handleDislike}>
+              Dislike {dislikes}
+            </StyledLikeButton>
+          </StyledLikesDiv>
+        </>
+      ) : (
+        <p>loading user...</p>
+      )}
     </StyledPostDiv>
   );
-}
- 
+};
+
 export default Reply;
