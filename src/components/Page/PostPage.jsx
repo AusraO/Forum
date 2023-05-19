@@ -6,6 +6,7 @@ import UsersContext from '../../contexts/UsersContext';
 import AddRepliesContext from '../../contexts/AddReplyContext';
 import RepliesContext from '../../contexts/RepliesContext';
 import Reply from '../UI/Molecules/Reply';
+import "./EditPostModalStyles.css"
 
 const StyledPostDiv = styled.div`
   padding: 0 50px;
@@ -23,18 +24,20 @@ const StyledUserInfo = styled.div`
   justify-content: flex-start;
 `;
 
-const PostPage = () => {
+const PostPage = ({ data }) => {
   const { postId } = useParams();
   const { posts } = useContext(PostsContext);
-  const { users, currentUser } = useContext(UsersContext); 
-  const { replies } = useContext(RepliesContext); 
-  const {addReply}= useContext(AddRepliesContext)
+  const { users, currentUser } = useContext(UsersContext);
+  const { replies } = useContext(RepliesContext);
+  const { addReply } = useContext(AddRepliesContext);
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
   const [selectedPost, setSelectedPost] = useState(null);
   const [userAction, setUserAction] = useState(null);
   const [replyContent, setReplyContent] = useState("");
   const [postReplies, setPostReplies] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [editedContent, setEditedContent] = useState("");
 
   useEffect(() => {
     const post = posts.find((post) => post.id.toString() === postId.toString());
@@ -42,11 +45,14 @@ const PostPage = () => {
       setSelectedPost(post);
       setLikes(post.likes || 0);
       setDislikes(post.dislikes || 0);
+      setEditedContent(post.content);
     }
   }, [postId, posts]);
 
   useEffect(() => {
-    const filteredReplies = replies.filter((reply) => reply.questionId.toString() === postId.toString());
+    const filteredReplies = replies.filter(
+      (reply) => reply.questionId.toString() === postId.toString()
+    );
     setPostReplies(filteredReplies);
   }, [postId, replies]);
 
@@ -110,6 +116,29 @@ const PostPage = () => {
     }
   };
 
+  const toggleModal = () => {
+    if (modal) {
+      setSelectedPost({ ...selectedPost, content: editedContent });
+    } else {
+      setEditedContent(selectedPost.content);
+    }
+    setModal(!modal);
+  };
+
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    setSelectedPost({ ...selectedPost, content: editedContent });
+    toggleModal();
+  };
+
+  if (modal) {
+    document.body.classList.add('active-modal');
+  } else {
+    document.body.classList.remove('active-modal');
+  }
+
+  const isCurrentUserOwner = currentUser && currentUser.id === postUser.id;
+
   return (
     <>
       <StyledPostDiv>
@@ -118,19 +147,57 @@ const PostPage = () => {
           <p>{postUser.userName}</p>
         </StyledUserInfo>
         <div>
-          <button onClick={handleLike} className={userAction === "like" ? "active" : ""} disabled={!currentUser}>
+          <button
+            onClick={handleLike}
+            className={userAction === "like" ? "active" : ""}
+            disabled={!currentUser}
+          >
             Like
           </button>
           <span>{likes}</span>
-          <button onClick={handleDislike} className={userAction === "dislike" ? "active" : ""} disabled={!currentUser}>
+          <button
+            onClick={handleDislike}
+            className={userAction === "dislike" ? "active" : ""}
+            disabled={!currentUser}
+          >
             Dislike
           </button>
           <span>{dislikes}</span>
         </div>
         <h2>{selectedPost.title}</h2>
-        <p>{selectedPost.description}</p>
+        
+        {modal ? (
+          <input
+            value={editedContent}
+            onChange={(e) => setEditedContent(e.target.value)}
+            placeholder="Edit content..."
+          />
+        ) : (
+          <p>{selectedPost.content}</p>
+        )}
+        {isCurrentUserOwner && <button onClick={toggleModal}>Edit post</button>}
       </StyledPostDiv>
 
+      {modal && (
+        <div className="modal">
+          <div className="overlay" onClick={toggleModal}></div>
+          <div className="modal-content">
+            <form onSubmit={handleEditSubmit}>
+              <textarea
+                value={editedContent}
+                onChange={(e) => setEditedContent(e.target.value)}
+                placeholder="Edit content..."
+              ></textarea>
+              <button type="submit" disabled={!currentUser}>
+                Edit
+              </button>
+            </form>
+            <button className="close-modal" onClick={toggleModal}>
+              X
+            </button>
+          </div>
+        </div>
+      )}
       <StyledPostDiv>
         <h3>Replies:</h3>
         {postReplies.length === 0 ? (
@@ -144,9 +211,7 @@ const PostPage = () => {
         )}
       </StyledPostDiv>
 
-      <form 
-      onSubmit={handleReplySubmit}
-      >
+      <form onSubmit={handleReplySubmit}>
         <textarea
           value={replyContent}
           onChange={(e) => setReplyContent(e.target.value)}
