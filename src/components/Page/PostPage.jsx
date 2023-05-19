@@ -6,7 +6,7 @@ import UsersContext from '../../contexts/UsersContext';
 import AddRepliesContext from '../../contexts/AddReplyContext';
 import RepliesContext from '../../contexts/RepliesContext';
 import Reply from '../UI/Molecules/Reply';
-import "./EditPostModalStyles.css"
+import "../Page/EditPostModalStyles.css"
 
 const StyledPostDiv = styled.div`
   padding: 0 50px;
