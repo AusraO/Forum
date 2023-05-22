@@ -6,35 +6,61 @@ import { Link , useNavigate} from "react-router-dom";
 
 
 const StyledFooter = styled.footer`
-height: 120px;
-width: 100%;
-background-color: #351f10;
-padding: 0;
-text-align: center;
-color: white;
+  height: 120px;
+  width: 100%;
+  background-color: #351f10;
+  padding: 0;
+  text-align: center;
+  color: white;
+  font-family: Arial, sans-serif;
+display: flex;
+flex-direction: column;
+p{
+font-size: 12px;
+color: #886754;
+padding-top: 20px;
+}
+  > nav ul li a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #886754;
 
-     >nav ul li a{
-            text-decoration: none;
-           font-size: large;
-            color: #886754;
-            
-        :hover{
-            color: #050301;
-        }
-        }
->nav ul{
+    &:hover {
+      color: #ffd966;
+    }
+  }
+
+  > nav ul {
     list-style-type: none;
     padding-right: 60px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
     padding-top: 10px;
     margin: 0;
-}
->nav ul li{
+  }
+
+  > nav ul li {
     padding-right: 40px;
-}
-`
+  }
+button {
+    width: 70px;
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+   
+    color: #886754;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      color: #ffd966;
+    }
+  }
+`;
 
 const Footer = () => {
     const { currentUser, setCurrentUser } = useContext(UsersContext);
