@@ -27,7 +27,7 @@ const Activity = () => {
         <Link to="/posts/newPost">
           <button>Add New Post</button>
         </Link>
-        <h1>{currentUser.userName} Posts</h1>
+        <h1>My Posts</h1>
         <div>
           {
             posts.map(post => 
