@@ -6,7 +6,7 @@ import UsersContext from '../../contexts/UsersContext';
 import AddRepliesContext from '../../contexts/AddReplyContext';
 import RepliesContext from '../../contexts/RepliesContext';
 import Reply from '../UI/Molecules/Reply';
-import "./EditPostModalStyles.css"
+import "../Page/EditPostModalStyles.css"
 
 const StyledPostDiv = styled.div`
   padding: 0 50px;
@@ -165,7 +165,7 @@ const PostPage = ({ data }) => {
           <span>{dislikes}</span>
         </div>
         <h2>{selectedPost.title}</h2>
-        
+     
         {modal ? (
           <input
             value={editedContent}
