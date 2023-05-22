@@ -33,15 +33,18 @@ const Home = () => {
       }
       <h1>All Posts</h1>
      <div>
-        {
-          posts.map(post => (
-            <Link key={post.id} to={(`/posts/${post.id}`)}>
-          
-            <Post data={post}/>  
-            </Link>
-          )
-          )
-        }
+        
+       {
+       posts.length === 0 ? (<p>No posts available..</p>) : (
+
+        posts.map(post =>
+            <Post
+                key={post.id}
+                data={post}
+            />
+        )
+    ) }
+        
       </div>
     </StyledMain>
   );

@@ -10,7 +10,8 @@ const NewPost = () => {
     const { currentUser } = useContext(UsersContext);
     const { setPosts, PostsActionTypes } = useContext(PostsContext);
     const [formInputs, setFormInputs] = useState({
-        title: ''
+        title: '',
+        content: ''
     });
 
     const inputHandler = e => {
@@ -25,7 +26,8 @@ const NewPost = () => {
         const newPost = {
             id: generateId(),
             userId: currentUser.id,
-            title: formInputs.title
+            title: formInputs.title,
+            content: formInputs.content
         }
         setPosts({
             type: PostsActionTypes.add,
@@ -48,12 +50,12 @@ const NewPost = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor='description'>Description:</label>
+                    <label htmlFor='content'>Description:</label>
                     <textarea
-                        name="description"
-                        id="description"
+                        name="content"
+                        id="content"
                         required
-                        value={formInputs.description}
+                        value={formInputs.content}
                         onChange={(e) => inputHandler(e)}
                     ></textarea>
                 </div>
