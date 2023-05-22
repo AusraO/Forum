@@ -165,7 +165,7 @@ const PostPage = ({ data }) => {
           <span>{dislikes}</span>
         </div>
         <h2>{selectedPost.title}</h2>
-        
+     
         {modal ? (
           <input
             value={editedContent}

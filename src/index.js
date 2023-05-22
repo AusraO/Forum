@@ -10,8 +10,10 @@ import {RepliesProvider} from './contexts/RepliesContext';
 import { AddRepliesProvider } from './contexts/AddReplyContext';
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
     <AddRepliesProvider>
     <RepliesProvider>
     <BrowserRouter>
@@ -25,4 +27,5 @@ root.render(
     </BrowserRouter>
     </RepliesProvider>
     </AddRepliesProvider>
+ 
 );

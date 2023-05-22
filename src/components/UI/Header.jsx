@@ -3,47 +3,65 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from "react";
 import UsersContext from "../../contexts/UsersContext";
 
-
 const HeaderStyled = styled.header`
-    height: 110px;
-    width:100%;
+  height: 110px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  background-color: #d4992a;
+  align-items: center;
+  color: white;
+  font-family: Arial, sans-serif;
+
+  > div {
     display: flex;
-    justify-content: space-around;
-    gap:20px; 
-    background-color: #d4992a;
+    gap: 2rem;
+    justify-content: flex-end;
     align-items: center;
-    color:white;
-    >div{
-      display: flex;
-      gap: 2rem;
-      justify-content: flex-end;
-      align-items: center;
-    
-   >button{
-      width: 90px;
-      height: 40px;
-      background-color: #F3CC9B;
-      border: none;
-      border-radius: 3px;
-      font-size: 16px;
+  }
+
+  > div > button {
+    width: 90px;
+    height: 40px;
+    background-color: #F3CC9B;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #4b3832;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #e0b37f;
     }
   }
-    img{
-    
-        height: 80px;
-        width: auto;
-}
-button{
-      width: 90px;
-      height: 35px;
-      background-color:rgba(38, 36, 41, 1);
-      border: none;
-      border-radius: 3px;
-      font-size: 16px;
-      color: white
-      
+
+  img {
+    height: 80px;
+    width: auto;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  button {
+    width: 90px;
+    height: 35px;
+    background-color: rgba(38, 36, 41, 1);
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(38, 36, 41, 0.8);
     }
-`
+  }
+`;
 
 
 const Header = () => {
