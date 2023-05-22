@@ -5,16 +5,54 @@ import PostsContext from '../../../contexts/PostsContext';
 import { Link } from 'react-router-dom';
 
 const StyledPostDiv = styled.div`
-  border: 1px solid black;
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background-color: #faf9f7;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  > div > a {
+    text-decoration: none;
+    color: black;
+    :hover {
+      color: #635029;
+      cursor: pointer;
+    }
+  }
+
+  > button {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: #f5e09a;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+  }
 `;
+
 const StyledUserInfoDiv = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
-  >img{
-    width: 50px;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #ffeaa5;
+  gap: 0.5rem;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  > p {
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  > img {
     height: 50px;
+    width: 50px;
     border-radius: 50%;
+    object-fit: cover;
   }
 `;
 
@@ -26,6 +64,20 @@ const Post = ({ data }) => {
 
   return (
     <StyledPostDiv>
+    
+      
+      { users.length ?
+        <StyledUserInfoDiv>
+          <img src={user.avatarURL} alt="user avatar" />
+          <p>{user.userName}</p>
+        </StyledUserInfoDiv>: <p>loading user...</p>
+      }
+      <div>
+      <Link to={`/posts/${data.id}`}>  <h3>{data.title}</h3></Link>
+      </div>
+      
+      
+          
       {
         currentUser && data.userId === currentUser.id &&
         <button
@@ -35,18 +87,6 @@ const Post = ({ data }) => {
           }) }
         >Delete Post</button>
       }
-       <Link to={`/posts/${data.id}`}>
-            View Details
-          </Link>
-      { users.length ?
-        <StyledUserInfoDiv>
-          <img src={user.avatarURL} alt="user avatar" />
-          <p>{user.userName}</p>
-        </StyledUserInfoDiv>: <p>loading user...</p>
-      }
-      <div>
-        <h3>{data.title}</h3>
-      </div>
     </StyledPostDiv>
   );
 }

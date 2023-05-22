@@ -51,20 +51,18 @@
       "dislikes": 2
     },
     {
-      "id": 4,
-      "userId": 1,
-      "title": "I think my rubber duck is dead.. Should I call police?",
-      "content": "He is not responding to me for more than an hour! I hear no heartbeat! What to do?",
-      "likes": 5,
-      "dislikes": 2
-    },
-    {
       "id": 5,
       "userId": 2,
       "title": "What is the best rubber duck breeder in town?",
       "content": "Looking for the best breeder in Vilnius. I want to participate in duck shows with my new duck friend. I will give it good home, I swear.",
       "likes": 5,
       "dislikes": 2
+    },
+    {
+      "id": "f59a7757-1af0-4351-81c6-ac32db97ed53",
+      "userId": 1,
+      "title": "I think my duck is dead. Should I call the police?",
+      "content": "He is not responding for more than an hour. Should I call the police?"
     }
   ],
   "replies": [

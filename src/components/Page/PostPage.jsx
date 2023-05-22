@@ -9,21 +9,80 @@ import Reply from '../UI/Molecules/Reply';
 import "../Page/EditPostModalStyles.css"
 
 const StyledPostDiv = styled.div`
-  padding: 0 50px;
-  border: 1px solid black;
-  > h1 {
-    text-align: center;
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background-color: #eee3cd;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+width: 90%;
+
+  .post{
+   padding-left: 10px;
+    background-color: #e9d1a2;
+    
+  }
+.postlikes{
+  width: 100%;
+  .likes > button {
+    width: 60px;
+    background-color: #f5e09a;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+  }
+}
+
+  > button {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: #f5e09a;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    :hover{
+      background-color: #b69f53;
+    }
   }
 `;
 
 const StyledUserInfo = styled.div`
-  > img {
-    width: 70px;
-  }
-  display: flex;
-  justify-content: flex-start;
-`;
 
+    display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #ffeaa5;
+  gap: 0.5rem;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  > p {
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  > img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+`;
+const StyledAnswerDiv = styled.div`
+  
+`
+const StyledPage = styled.div`
+
+  display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 1rem;
+align-items: center;
+margin-top: 1rem;
+`
 const PostPage = ({ data }) => {
   const { postId } = useParams();
   const { posts } = useContext(PostsContext);
@@ -140,13 +199,32 @@ const PostPage = ({ data }) => {
   const isCurrentUserOwner = currentUser && currentUser.id === postUser.id;
 
   return (
-    <>
+    <StyledPage>
       <StyledPostDiv>
         <StyledUserInfo>
           <img src={postUser.avatarURL} alt="user avatar" />
           <p>{postUser.userName}</p>
         </StyledUserInfo>
-        <div>
+
+<div className='postlikes'>
+
+        <div className='post'>
+          <h2>{selectedPost.title}</h2>
+
+          {modal ? (
+            <input
+              value={editedContent}
+              onChange={(e) => setEditedContent(e.target.value)}
+              placeholder="Edit content..."
+            />
+          ) : (
+            <p>{selectedPost.content}</p>
+          )}
+        </div>
+       
+
+
+        <div className='likes'>
           <button
             onClick={handleLike}
             className={userAction === "like" ? "active" : ""}
@@ -164,20 +242,10 @@ const PostPage = ({ data }) => {
           </button>
           <span>{dislikes}</span>
         </div>
-        <h2>{selectedPost.title}</h2>
-     
-        {modal ? (
-          <input
-            value={editedContent}
-            onChange={(e) => setEditedContent(e.target.value)}
-            placeholder="Edit content..."
-          />
-        ) : (
-          <p>{selectedPost.content}</p>
-        )}
+        </div>
         {isCurrentUserOwner && <button onClick={toggleModal}>Edit post</button>}
       </StyledPostDiv>
-
+    
       {modal && (
         <div className="modal">
           <div className="overlay" onClick={toggleModal}></div>
@@ -198,7 +266,7 @@ const PostPage = ({ data }) => {
           </div>
         </div>
       )}
-      <StyledPostDiv>
+      <StyledAnswerDiv>
         <h3>Replies:</h3>
         {postReplies.length === 0 ? (
           <p>No replies yet.</p>
@@ -209,7 +277,7 @@ const PostPage = ({ data }) => {
             ))}
           </div>
         )}
-      </StyledPostDiv>
+      </StyledAnswerDiv>
 
       <form onSubmit={handleReplySubmit}>
         <textarea
@@ -221,7 +289,7 @@ const PostPage = ({ data }) => {
           Reply
         </button>
       </form>
-    </>
+    </StyledPage>
   );
 };
 
