@@ -39,6 +39,14 @@
       "password": "1?Mmmmmmm",
       "passwordConfirm": "1?Mmmmmmm",
       "id": "a11d5ae9-f7ae-4766-a65f-e218cf86c1b8"
+    },
+    {
+      "userName": "ducky",
+      "avatarURL": "https://img.freepik.com/premium-vector/cute-white-swan-avatar_79416-79.jpg?w=2000",
+      "email": "l@l",
+      "password": "1?Mmmmmm",
+      "passwordConfirm": "1?Mmmmmm",
+      "id": "1de9e386-1408-4d2c-a20a-a7489475f25b"
     }
   ],
   "posts": [
