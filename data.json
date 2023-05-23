@@ -26,11 +26,19 @@
     },
     {
       "userName": "aaa",
-      "avatarURL": "https://3076592524-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/spaces%2F-MiIkRK_o3RBhZzUkrzr%2Favatar-1630271589036.png",
+      "avatarURL": "https://cdn0.iconfinder.com/data/icons/cute-farm-animal-with-christmas-hat/64/farm_Animal_xmas_christmas_avatar_hat-11-512.png",
       "email": "aa@aa",
       "password": "!1Aaaaaaa",
       "passwordConfirm": "!1Aaaaaaa",
       "id": "622a5a20-6661-45a2-aa73-741d93cb53fe"
+    },
+    {
+      "userName": "ducky",
+      "avatarURL": "https://img.freepik.com/premium-vector/cute-green-duck-avatar_79416-84.jpg",
+      "email": "v@v",
+      "password": "1?Mmmmmmm",
+      "passwordConfirm": "1?Mmmmmmm",
+      "id": "a11d5ae9-f7ae-4766-a65f-e218cf86c1b8"
     }
   ],
   "posts": [
@@ -38,7 +46,7 @@
       "id": 1,
       "userId": 2,
       "title": "Where the duck am I???",
-      "content": "I think I am lost, can anybody tell me where to go??",
+      "content": "I think I am lost, can anybody tell me where to go?? I need help",
       "likes": 5,
       "dislikes": 2
     },
@@ -51,20 +59,18 @@
       "dislikes": 2
     },
     {
-      "id": 4,
-      "userId": 1,
-      "title": "I think my rubber duck is dead.. Should I call police?",
-      "content": "He is not responding to me for more than an hour! I hear no heartbeat! What to do?",
-      "likes": 5,
-      "dislikes": 2
-    },
-    {
       "id": 5,
       "userId": 2,
       "title": "What is the best rubber duck breeder in town?",
       "content": "Looking for the best breeder in Vilnius. I want to participate in duck shows with my new duck friend. I will give it good home, I swear.",
       "likes": 5,
       "dislikes": 2
+    },
+    {
+      "id": "f59a7757-1af0-4351-81c6-ac32db97ed53",
+      "userId": 1,
+      "title": "I think my duck is dead. Should I call the police?",
+      "content": "He is not responding for more than an hour. Should I call the police?"
     }
   ],
   "replies": [
@@ -73,8 +79,8 @@
       "userId": 3,
       "questionId": 1,
       "content": "You are at the forum of the ducks of course!",
-      "likes": 10,
-      "dislikes": 9
+      "likes": 12,
+      "dislikes": 10
     },
     {
       "id": 2,
@@ -90,7 +96,7 @@
       "questionId": 1,
       "content": "Are you joking????",
       "likes": 6,
-      "dislikes": 25
+      "dislikes": 26
     },
     {
       "id": 4,
@@ -105,7 +111,7 @@
       "userId": 1,
       "questionId": "3",
       "content": "No matter what, The Duck is always rigth, apologize immediately!",
-      "likes": 0,
+      "likes": 1,
       "dislikes": 0
     },
     {
@@ -115,7 +121,6 @@
       "content": "I once met a guy, who knew a guy whose sister in law had a rubber duck farm. You can call them.",
       "likes": 0,
       "dislikes": 0
-
     }
   ]
 }

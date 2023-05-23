@@ -9,7 +9,7 @@ const HeaderStyled = styled.header`
   display: flex;
   justify-content: space-around;
   gap: 20px;
-  background-color: #d4992a;
+  background-color: #f5e1a1;
   align-items: center;
   color: white;
   font-family: Arial, sans-serif;
@@ -22,12 +22,12 @@ const HeaderStyled = styled.header`
   }
 
   > div > button {
-    width: 90px;
-    height: 40px;
+    width: 70px;
+    height: 35px;
     background-color: #F3CC9B;
     border: none;
     border-radius: 3px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
     color: #4b3832;
     cursor: pointer;
@@ -41,26 +41,39 @@ const HeaderStyled = styled.header`
   img {
     height: 80px;
     width: auto;
-    border-radius: 50%;
+    border-radius: 30%;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   }
 
   button {
-    width: 90px;
-    height: 35px;
-    background-color: rgba(38, 36, 41, 1);
-    border: none;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  width: 100px;
+  height: 40px;
+  background-color: #f5e1a1;;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4e3c00;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
-    &:hover {
-      background-color: rgba(38, 36, 41, 0.8);
+  &:hover {
+   
+    border-bottom: 1px solid black;
+    animation: hoverAnimation 0.3s forwards;
+  }
+
+  @keyframes hoverAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+    100% {
+      transform: translateY(0);
     }
   }
+}
 `;
 
 
@@ -71,7 +84,6 @@ const Header = () => {
 
   return (
     <>
-
       <HeaderStyled>
       {
           !currentUser &&
@@ -96,10 +108,7 @@ const Header = () => {
                 currentUser &&
                 <Link to="/activity"><button>My activity</button></Link>
               }
-                    {
-                currentUser &&
-                <Link to="/profile"><button>My profile</button></Link>
-              }
+                   
               <div>
                 <img style={{ width: "70px", height: "auto" }} src={currentUser.avatarURL} alt="user avatar" />
                 <p>{currentUser.userName}</p>
@@ -115,11 +124,7 @@ const Header = () => {
               </div>
             </>
         }
-
-
-
       </HeaderStyled>
-
     </>
   );
 }

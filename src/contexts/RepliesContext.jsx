@@ -5,7 +5,8 @@ const RepliesActionTypes = {
   get: 'get_all_replies',
   add: 'add_new_reply',
   delete: 'remove_specific_reply',
-  updateLikes: 'update_reply_likes'
+  updateLikes: 'update_reply_likes',
+  
 };
 
 const reducer = (state, action) => {
@@ -26,7 +27,7 @@ const reducer = (state, action) => {
         method: "DELETE"
       });
       return state.filter(el => el.id !== action.id);
-      case RepliesActionTypes.updateLikes: // Handle updateLikes action
+      case RepliesActionTypes.updateLikes: 
       const updatedReplies = state.map(reply => {
         if (reply.id === action.id) {
           return {
@@ -37,7 +38,7 @@ const reducer = (state, action) => {
         }
         return reply;
       });
-      fetch(`http://localhost:8080/replies/${action.id}`, { // Update the API with new likes/dislikes
+      fetch(`http://localhost:8080/replies/${action.id}`, { 
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"
