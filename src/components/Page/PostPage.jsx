@@ -7,24 +7,107 @@ import AddRepliesContext from '../../contexts/AddReplyContext';
 import RepliesContext from '../../contexts/RepliesContext';
 import Reply from '../UI/Molecules/Reply';
 import "../Page/EditPostModalStyles.css"
+import { GrLike, GrDislike } from 'react-icons/gr';
+
 
 const StyledPostDiv = styled.div`
-  padding: 0 50px;
-  border: 1px solid black;
-  > h1 {
-    text-align: center;
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background-color: #f8f5ed;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+width: 90%;
+  .post{
+   padding-left: 10px;
+    background-color: #F5E1A1
+  }
+.postlikes{
+  width: 100%;
+  .likes > button {
+    width: 60px;
+    background-color: #f5e09a;
+    border: none;
+    font-size: 15px;
+    :hover{
+      background-color: #e6c963;
+      cursor: pointer;
+    }
+  }
+}
+  > button {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: #f5e09a;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    :hover{
+      background-color: #e6c963;
+    }
   }
 `;
 
 const StyledUserInfo = styled.div`
-  > img {
-    width: 70px;
+    display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #ffeaa5;
+  gap: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  > p {
+    font-size: 17px;
+    font-weight: bold;
   }
-  display: flex;
-  justify-content: flex-start;
+  > img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 `;
+const StyledAnswerDiv = styled.div`
+    width: 90%;
+  >h2{
+    font-family: monospace;
+  }
+`
+const StyledPage = styled.div`
+min-height: 67vh;
+  display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 1rem;
+align-items: center;
+margin-top: 1rem;
+>form{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  background-color:  #f8f5ed;
+  padding: 15px;
+}
+>form>button{
+  width: 80px;
+  background-color:#ffeaa5 ;
+  border: none;
+  height: 30px;
+  :hover{
+    cursor: pointer;
+    background-color: #e6c963;
+  }
+}
+>form>textarea{
+  width: 500px;
+  height: 100px;
+}
+`
 
-const PostPage = ({ data }) => {
+const PostPage = () => {
   const { postId } = useParams();
   const { posts } = useContext(PostsContext);
   const { users, currentUser } = useContext(UsersContext);
@@ -76,7 +159,6 @@ const PostPage = ({ data }) => {
         setUserAction("like");
       }
     } else {
-      // Handle case when user is not logged in
       console.log("User not logged in. Please log in to perform this action.");
     }
   };
@@ -95,7 +177,6 @@ const PostPage = ({ data }) => {
         setUserAction("dislike");
       }
     } else {
-      // Handle case when user is not logged in
       console.log("User not logged in. Please log in to perform this action.");
     }
   };
@@ -104,7 +185,7 @@ const PostPage = ({ data }) => {
     e.preventDefault();
     if (currentUser && replyContent.trim() !== "") {
       const newReply = {
-        id: replies.length + 1, // Generate a unique ID for the new reply
+        id: replies.length + 1,
         userId: currentUser.id,
         questionId: postId,
         content: replyContent,
@@ -127,8 +208,32 @@ const PostPage = ({ data }) => {
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    setSelectedPost({ ...selectedPost, content: editedContent });
-    toggleModal();
+    
+    if (currentUser) {
+      const updatedPost = {
+        id: selectedPost.id,
+        userId: selectedPost.userId,
+        title: selectedPost.title,
+        content: editedContent,
+        likes: selectedPost.likes,
+        dislikes: selectedPost.dislikes
+      };
+     
+      fetch(`http://localhost:8080/posts/${selectedPost.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedPost)
+      })
+        .then(() => {
+          setSelectedPost(updatedPost);
+          toggleModal();
+        })
+        .catch((error) => {
+          console.log("Error updating post:", error);
+        });
+    }
   };
 
   if (modal) {
@@ -140,55 +245,60 @@ const PostPage = ({ data }) => {
   const isCurrentUserOwner = currentUser && currentUser.id === postUser.id;
 
   return (
-    <>
+    <StyledPage>
       <StyledPostDiv>
         <StyledUserInfo>
           <img src={postUser.avatarURL} alt="user avatar" />
           <p>{postUser.userName}</p>
         </StyledUserInfo>
-        <div>
-          <button
-            onClick={handleLike}
-            className={userAction === "like" ? "active" : ""}
-            disabled={!currentUser}
-          >
-            Like
-          </button>
-          <span>{likes}</span>
-          <button
-            onClick={handleDislike}
-            className={userAction === "dislike" ? "active" : ""}
-            disabled={!currentUser}
-          >
-            Dislike
-          </button>
-          <span>{dislikes}</span>
+        <div className='postlikes'>
+          <div className='post'>
+            <h2>{selectedPost.title}</h2>
+            {modal ? (
+              <input
+                value={editedContent}
+                onChange={(e) => setEditedContent(e.target.value)}
+                placeholder="Edit content..."
+              />
+            ) : (
+              <p>{selectedPost.content}</p>
+            )}
+          </div>
+          <div className='likes'>
+            <button
+              onClick={handleLike}
+              className={userAction === "like" ? "active" : ""}
+              disabled={!currentUser}
+            >
+              <GrLike />   {likes}
+            </button>
+            <button
+              onClick={handleDislike}
+              className={userAction === "dislike" ? "active" : ""}
+              disabled={!currentUser}
+            >
+              <GrDislike />   {dislikes}
+            </button>
+          </div>
         </div>
-        <h2>{selectedPost.title}</h2>
-     
-        {modal ? (
-          <input
-            value={editedContent}
-            onChange={(e) => setEditedContent(e.target.value)}
-            placeholder="Edit content..."
-          />
-        ) : (
-          <p>{selectedPost.content}</p>
-        )}
         {isCurrentUserOwner && <button onClick={toggleModal}>Edit post</button>}
       </StyledPostDiv>
-
       {modal && (
         <div className="modal">
           <div className="overlay" onClick={toggleModal}></div>
           <div className="modal-content">
             <form onSubmit={handleEditSubmit}>
               <textarea
+                className="modal-textarea"
                 value={editedContent}
                 onChange={(e) => setEditedContent(e.target.value)}
                 placeholder="Edit content..."
               ></textarea>
-              <button type="submit" disabled={!currentUser}>
+              <button
+                className="modal-button"
+                type="submit"
+                disabled={!currentUser}
+              >
                 Edit
               </button>
             </form>
@@ -198,8 +308,8 @@ const PostPage = ({ data }) => {
           </div>
         </div>
       )}
-      <StyledPostDiv>
-        <h3>Replies:</h3>
+      <StyledAnswerDiv>
+        <h2>Replies:</h2>
         {postReplies.length === 0 ? (
           <p>No replies yet.</p>
         ) : (
@@ -209,10 +319,11 @@ const PostPage = ({ data }) => {
             ))}
           </div>
         )}
-      </StyledPostDiv>
+      </StyledAnswerDiv>
 
       <form onSubmit={handleReplySubmit}>
         <textarea
+          className='textArea'
           value={replyContent}
           onChange={(e) => setReplyContent(e.target.value)}
           placeholder="Write a reply..."
@@ -221,7 +332,7 @@ const PostPage = ({ data }) => {
           Reply
         </button>
       </form>
-    </>
+    </StyledPage>
   );
 };
 

@@ -7,8 +7,21 @@ import Post from "../UI/Molecules/Post";
 
 const StyledMain = styled.main`
   padding: 0 50px;
+  text-align: center;
+  >a >button{
+    background-color:#FFEAA5 ;
+    border: none;
+    width: 100px;
+    height: 40px;
+    margin-bottom: 10px;
+    :hover{
+      background-color: #e6c963;
+      cursor: pointer;
+    }
+  }
   > h1{
     text-align: center;
+    font-family: monospace;
   }
   >div{
     display: flex;
@@ -25,18 +38,17 @@ const Home = () => {
 
   return (
     <StyledMain>
+
+      <h1>Comunity questions</h1>
       {
         currentUser &&
         <Link to="/posts/newPost">
           <button>Add New Post</button>
         </Link>
       }
-      <h1>All Posts</h1>
      <div>
-        
        {
        posts.length === 0 ? (<p>No posts available..</p>) : (
-
         posts.map(post =>
             <Post
                 key={post.id}
@@ -44,7 +56,6 @@ const Home = () => {
             />
         )
     ) }
-        
       </div>
     </StyledMain>
   );
