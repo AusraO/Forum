@@ -22,7 +22,6 @@ const StyledPostDiv = styled.div`
      
     }
   }
-
   > button {
     position: absolute;
     bottom: 1rem;
@@ -34,7 +33,6 @@ const StyledPostDiv = styled.div`
       background-color: #e6c963;
       cursor: pointer;
     }
-   
   }
 `;
 
@@ -45,14 +43,11 @@ const StyledUserInfoDiv = styled.div`
   padding: 10px;
   background-color: #ffeaa5;
   gap: 0.5rem;
-
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
   > p {
     font-size: 17px;
     font-weight: bold;
   }
-
   > img {
     height: 50px;
     width: 50px;
@@ -69,8 +64,6 @@ const Post = ({ data }) => {
 
   return (
     <StyledPostDiv>
-    
-      
       { users.length ?
         <StyledUserInfoDiv>
           <img src={user.avatarURL} alt="user avatar" />
@@ -79,10 +72,7 @@ const Post = ({ data }) => {
       }
       <div>
       <Link to={`/posts/${data.id}`}>  <h3>{data.title}</h3></Link>
-      </div>
-      
-      
-          
+      </div>  
       {
         currentUser && data.userId === currentUser.id &&
         <button

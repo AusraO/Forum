@@ -47,10 +47,8 @@ const Home = () => {
         </Link>
       }
      <div>
-        
        {
        posts.length === 0 ? (<p>No posts available..</p>) : (
-
         posts.map(post =>
             <Post
                 key={post.id}
@@ -58,7 +56,6 @@ const Home = () => {
             />
         )
     ) }
-        
       </div>
     </StyledMain>
   );

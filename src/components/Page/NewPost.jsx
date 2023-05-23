@@ -12,7 +12,6 @@ const StyledMain = styled.main`
   gap: 1rem;
   align-items: center;
   margin-top: 1rem;
-
   > h2 {
     font-family: monospace;
   }
@@ -24,7 +23,6 @@ const StyledMain = styled.main`
     gap: 1rem;
     background-color: #f8f5ed;
     padding: 15px;
-
     >  input[type="submit"] {
       width: 80px;
       background-color: #ffeaa5;
@@ -36,11 +34,9 @@ const StyledMain = styled.main`
         background-color: #e6c963;
       }
     }
-
     > div {
       display: flex;
       flex-direction: column;
-
       > textarea {
         width: 500px;
         height: 100px;
@@ -49,7 +45,6 @@ const StyledMain = styled.main`
         border-radius: 5px; 
         resize: vertical; 
       }
-
       > .titleArea {
         width: 500px;
         padding: 5px; 

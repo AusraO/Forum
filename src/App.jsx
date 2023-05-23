@@ -37,6 +37,7 @@ const App = () => {
           <Navigate to="/login" />
         } />
          <Route path="/posts/:postId" element={<PostPage />} />
+        
         <Route path="/register" element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/home' element={<Home />} />

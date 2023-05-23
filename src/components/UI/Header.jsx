@@ -84,7 +84,6 @@ const Header = () => {
 
   return (
     <>
-
       <HeaderStyled>
       {
           !currentUser &&
@@ -125,11 +124,7 @@ const Header = () => {
               </div>
             </>
         }
-
-
-
       </HeaderStyled>
-
     </>
   );
 }

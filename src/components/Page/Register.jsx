@@ -14,12 +14,10 @@ const StyledMain = styled.main`
     align-items: center;
     justify-content: center;
 text-align: center;
-
   > h1 {
     margin-top: 0px;
     padding-top: 10px;
   }
-
   > form {
     display: flex;
     flex-direction: column;
@@ -30,18 +28,15 @@ text-align: center;
     padding: 15px;
     width: 400px;
     margin-bottom: 10px;
-
     > div {
       display: flex;
       flex-direction: column;
-
       > input {
         width: 100%;
         padding: 5px;
         border: 1px solid #ccc;
         border-radius: 5px;
       }
-
       > span {
         color: red;
       }
@@ -59,7 +54,6 @@ const SubmitButton = styled.input`
   font-weight: bold;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-
   :hover {
     cursor: pointer;
     background-color: #e6c963;
@@ -101,21 +95,17 @@ const Register = () => {
             type: NewUsersActionTypes.add,
             data: newUser
         })
-
         navigate('/dogs')
     }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         formik.handleSubmit();
         formHandler(e);
     }
-
     const handleChange = (e) => {
         formik.handleChange(e);
         inputHandler(e);
     }
-
     const values = {
 
         userName: '',
@@ -123,7 +113,6 @@ const Register = () => {
         email: '',
         password: ''
     }
-
     const validationSchema = Yup.object({
 
         userName: Yup.string()
@@ -177,7 +166,6 @@ const Register = () => {
                         >{formik.errors.userName}</span>
                     }
                 </div>
-
                 <div>
                     <label htmlFor='avatarURL'>Avatar URL:</label>
                     <input
