@@ -26,7 +26,7 @@
     },
     {
       "userName": "aaa",
-      "avatarURL": "https://3076592524-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/spaces%2F-MiIkRK_o3RBhZzUkrzr%2Favatar-1630271589036.png",
+      "avatarURL": "https://cdn.dribbble.com/users/19658/screenshots/3576141/media/ca38af59f2434493f8cb9c4229cbfc2e.png?compress=1&resize=400x300&vertical=top",
       "email": "aa@aa",
       "password": "!1Aaaaaaa",
       "passwordConfirm": "!1Aaaaaaa",
@@ -119,6 +119,22 @@
       "userId": 1,
       "questionId": "f59a7757-1af0-4351-81c6-ac32db97ed53",
       "content": "aaaaa",
+      "likes": 0,
+      "dislikes": 0
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "questionId": "1",
+      "content": "ssss",
+      "likes": 0,
+      "dislikes": 0
+    },
+    {
+      "id": 9,
+      "userId": "622a5a20-6661-45a2-aa73-741d93cb53fe",
+      "questionId": "f59a7757-1af0-4351-81c6-ac32db97ed53",
+      "content": "Dont call the police! Hide body in the forest and run to Cuba!",
       "likes": 0,
       "dislikes": 0
     }

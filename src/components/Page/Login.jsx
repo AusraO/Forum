@@ -62,6 +62,8 @@ const SubmitButton = styled.input`
     cursor: pointer;
   }
 `;
+
+
 const Login = () => {
   const [formInputs, setFormInputs] = useState({
     userName: '',
@@ -82,14 +84,19 @@ const Login = () => {
 
   const formSubmit = e => {
     e.preventDefault();
-    const loggedInUser = users.find(user => user.userName === formInputs.userName && user.password === formInputs.password);
-    if(loggedInUser){
+    const loggedInUser = users.find(
+      user =>
+        user.userName === formInputs.userName &&
+        user.password === formInputs.password
+    );
+    if (loggedInUser) {
       setCurrentUser(loggedInUser);
       navigate('/home');
+      
     } else {
       setFailedLogIn(true);
     }
-  }
+  };
 
   return (
     <StyledMain>

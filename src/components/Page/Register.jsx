@@ -95,8 +95,13 @@ const Register = () => {
             type: NewUsersActionTypes.add,
             data: newUser
         })
-        navigate('/dogs')
+        navigate('/home');
+        setTimeout(() => {
+            window.location.href = "http://localhost:3000/home/";
+          }, 1000); // Delay of 1 second (1000 milliseconds)
+        
     }
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         formik.handleSubmit();
