@@ -13,13 +13,17 @@ const StyledFooter = styled.footer`
   text-align: center;
   color: white;
   font-family: Arial, sans-serif;
-display: flex;
-flex-direction: column;
-p{
-font-size: 12px;
-color: #886754;
-padding-top: 20px;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    font-size: 12px;
+    color: #886754;
+    padding-top: 20px;
+  }
+
   > nav ul li a {
     text-decoration: none;
     font-size: 15px;
@@ -32,7 +36,6 @@ padding-top: 20px;
 
   > nav ul {
     list-style-type: none;
-    padding-right: 60px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -44,14 +47,14 @@ padding-top: 20px;
   > nav ul li {
     padding-right: 40px;
   }
-button {
+
+  button {
     width: 70px;
     height: 35px;
     background-color: transparent;
     border: none;
     border-radius: 3px;
     font-size: 15px;
-   
     color: #886754;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -61,7 +64,6 @@ button {
     }
   }
 `;
-
 const Footer = () => {
     const { currentUser, setCurrentUser } = useContext(UsersContext);
     const navigate = useNavigate();

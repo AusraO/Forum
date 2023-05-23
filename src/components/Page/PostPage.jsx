@@ -7,20 +7,22 @@ import AddRepliesContext from '../../contexts/AddReplyContext';
 import RepliesContext from '../../contexts/RepliesContext';
 import Reply from '../UI/Molecules/Reply';
 import "../Page/EditPostModalStyles.css"
+import { GrLike, GrDislike } from 'react-icons/gr';
+
 
 const StyledPostDiv = styled.div`
   position: relative;
   display: flex;
   gap: 1rem;
   align-items: center;
-  background-color: #eee3cd;
+  background-color: #f8f5ed;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 width: 90%;
 
   .post{
    padding-left: 10px;
-    background-color: #e9d1a2;
+    background-color: #F5E1A1
     
   }
 .postlikes{
@@ -30,7 +32,12 @@ width: 90%;
     background-color: #f5e09a;
     border: none;
     font-size: 15px;
-    cursor: pointer;
+    :hover{
+      background-color: #e6c963;
+      cursor: pointer;
+    }
+    
+   
   }
 }
 
@@ -43,7 +50,7 @@ width: 90%;
     font-size: 15px;
     cursor: pointer;
     :hover{
-      background-color: #b69f53;
+      background-color: #e6c963;
     }
   }
 `;
@@ -72,17 +79,47 @@ const StyledUserInfo = styled.div`
   }
 `;
 const StyledAnswerDiv = styled.div`
+    width: 90%;
   
+  >h2{
+    font-family: monospace;
+
+  }
 `
 const StyledPage = styled.div`
-
+min-height: 67vh;
   display: flex;
 flex-direction: column;
 justify-content: center;
 gap: 1rem;
 align-items: center;
 margin-top: 1rem;
+>form{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  background-color:  #f8f5ed;
+  padding: 15px;
+}
+>form>button{
+  width: 80px;
+  background-color:#ffeaa5 ;
+  border: none;
+  height: 30px;
+  :hover{
+    cursor: pointer;
+    background-color: #e6c963;
+  }
+}
+>form>textarea{
+  width: 500px;
+  height: 100px;
+
+}
 `
+
+
 const PostPage = ({ data }) => {
   const { postId } = useParams();
   const { posts } = useContext(PostsContext);
@@ -230,44 +267,49 @@ const PostPage = ({ data }) => {
             className={userAction === "like" ? "active" : ""}
             disabled={!currentUser}
           >
-            Like
+          <GrLike/>   {likes}
           </button>
-          <span>{likes}</span>
+          
           <button
             onClick={handleDislike}
             className={userAction === "dislike" ? "active" : ""}
             disabled={!currentUser}
           >
-            Dislike
+          <GrDislike/>   {dislikes}
           </button>
-          <span>{dislikes}</span>
+          
         </div>
         </div>
         {isCurrentUserOwner && <button onClick={toggleModal}>Edit post</button>}
       </StyledPostDiv>
     
       {modal && (
-        <div className="modal">
-          <div className="overlay" onClick={toggleModal}></div>
-          <div className="modal-content">
-            <form onSubmit={handleEditSubmit}>
-              <textarea
-                value={editedContent}
-                onChange={(e) => setEditedContent(e.target.value)}
-                placeholder="Edit content..."
-              ></textarea>
-              <button type="submit" disabled={!currentUser}>
-                Edit
-              </button>
-            </form>
-            <button className="close-modal" onClick={toggleModal}>
-              X
-            </button>
-          </div>
-        </div>
-      )}
+  <div className="modal">
+    <div className="overlay" onClick={toggleModal}></div>
+    <div className="modal-content">
+      <form onSubmit={handleEditSubmit}>
+        <textarea
+          className="modal-textarea"
+          value={editedContent}
+          onChange={(e) => setEditedContent(e.target.value)}
+          placeholder="Edit content..."
+        ></textarea>
+        <button
+          className="modal-button"
+          type="submit"
+          disabled={!currentUser}
+        >
+          Edit
+        </button>
+      </form>
+      <button className="close-modal" onClick={toggleModal}>
+        X
+      </button>
+    </div>
+  </div>
+)}
       <StyledAnswerDiv>
-        <h3>Replies:</h3>
+        <h2>Replies:</h2>
         {postReplies.length === 0 ? (
           <p>No replies yet.</p>
         ) : (
@@ -281,6 +323,7 @@ const PostPage = ({ data }) => {
 
       <form onSubmit={handleReplySubmit}>
         <textarea
+        className='textArea'
           value={replyContent}
           onChange={(e) => setReplyContent(e.target.value)}
           placeholder="Write a reply..."

@@ -9,29 +9,62 @@ import styled from 'styled-components'
 import UsersContext from '../../contexts/UsersContext'
 
 const StyledMain = styled.main`
-background-color: #F3CC9B;
-text-align: center;
-padding-bottom: 20px;
->h1{
-    margin-top: 0px;
-    padding-top: 10px;
-}
->form{
-    display: flex;
-    gap: 1rem;
+   display: flex;
     flex-direction: column;
     align-items: center;
-}
-`
+    justify-content: center;
+text-align: center;
+
+  > h1 {
+    margin-top: 0px;
+    padding-top: 10px;
+  }
+
+  > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #f8f5ed;
+    padding: 15px;
+    width: 400px;
+    margin-bottom: 10px;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+
+      > input {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      > span {
+        color: red;
+      }
+    }
+  }
+`;
+
 const SubmitButton = styled.input`
-  background-color: #351F10;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 4px;
+  background-color: #ffeaa5;
   border: none;
-  font-size: 16px;
- 
-`
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  :hover {
+    cursor: pointer;
+    background-color: #e6c963;
+  }
+`;
 const Register = () => {
     const { users } = useContext(UsersContext);
     const { NewUsersActionTypes, setNewUsers } = useContext(NewUsersContext);

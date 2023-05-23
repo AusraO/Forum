@@ -109,10 +109,7 @@ const Header = () => {
                 currentUser &&
                 <Link to="/activity"><button>My activity</button></Link>
               }
-                    {
-                currentUser &&
-                <Link to="/profile"><button>My profile</button></Link>
-              }
+                   
               <div>
                 <img style={{ width: "70px", height: "auto" }} src={currentUser.avatarURL} alt="user avatar" />
                 <p>{currentUser.userName}</p>

@@ -19,6 +19,7 @@ const StyledPostDiv = styled.div`
     :hover {
       color: #635029;
       cursor: pointer;
+     
     }
   }
 
@@ -29,7 +30,11 @@ const StyledPostDiv = styled.div`
     background-color: #f5e09a;
     border: none;
     font-size: 15px;
-    cursor: pointer;
+    :hover{
+      background-color: #e6c963;
+      cursor: pointer;
+    }
+   
   }
 `;
 
