@@ -208,8 +208,32 @@ const PostPage = () => {
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    setSelectedPost({ ...selectedPost, content: editedContent });
-    toggleModal();
+    
+    if (currentUser) {
+      const updatedPost = {
+        id: selectedPost.id,
+        userId: selectedPost.userId,
+        title: selectedPost.title,
+        content: editedContent,
+        likes: selectedPost.likes,
+        dislikes: selectedPost.dislikes
+      };
+     
+      fetch(`http://localhost:8080/posts/${selectedPost.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedPost)
+      })
+        .then(() => {
+          setSelectedPost(updatedPost);
+          toggleModal();
+        })
+        .catch((error) => {
+          console.log("Error updating post:", error);
+        });
+    }
   };
 
   if (modal) {
