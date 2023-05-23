@@ -5,33 +5,65 @@ import UsersContext from "../../contexts/UsersContext";
 
 
 const StyledMain = styled.main`
-background-color: #F3CC9B;
-text-align: center;
->h1{
-  margin-top: 0;
-  padding: 10px;
-}
-  > form{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 50%;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+min-height: 67vh;
+  > h1 {
+    margin-top: 0;
+    padding: 10px;
+    font-family: monospace;
+  }
+
+  > form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
+    background-color: #f8f5ed;
+    padding: 15px;
+    width: 400px;
+    margin-bottom: 10px;
 
+    > div {
+      display: flex;
+      flex-direction: column;
+
+      > label {
+        margin-bottom: 5px;
+      }
+
+      > input {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    }
   }
-`
+`;
+
 const SubmitButton = styled.input`
-  background-color: #351F10;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 4px;
+  background-color: #ffeaa5;
   border: none;
-  font-size: 16px;
- 
-`
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  :hover {
+    background-color: #e6c963;
+    cursor: pointer;
+  }
+`;
+
+
 const Login = () => {
   const [formInputs, setFormInputs] = useState({
     userName: '',
@@ -52,14 +84,19 @@ const Login = () => {
 
   const formSubmit = e => {
     e.preventDefault();
-    const loggedInUser = users.find(user => user.userName === formInputs.userName && user.password === formInputs.password);
-    if(loggedInUser){
+    const loggedInUser = users.find(
+      user =>
+        user.userName === formInputs.userName &&
+        user.password === formInputs.password
+    );
+    if (loggedInUser) {
       setCurrentUser(loggedInUser);
       navigate('/home');
+      
     } else {
       setFailedLogIn(true);
     }
-  }
+  };
 
   return (
     <StyledMain>

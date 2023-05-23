@@ -6,14 +6,28 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const StyledMain = styled.main`
-  padding: 0 50px;
+  padding: 10px 50px;
+  text-align: center;
+  min-height: 67vh;
   > h1{
     text-align: center;
+    font-family: monospace;
   }
   >div{
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+  >a>button{
+    background-color:#FFEAA5 ;
+    border: none;
+    width: 100px;
+    height: 40px;
+    margin-bottom: 10px;
+    :hover{
+      background-color: #e6c963;
+      cursor: pointer;
+    }
   }
 `;
 
@@ -24,10 +38,11 @@ const Activity = () => {
   
     return (
       <StyledMain>
+        <h1>My Posts</h1>
         <Link to="/posts/newPost">
           <button>Add New Post</button>
         </Link>
-        <h1>{currentUser.userName} Posts</h1>
+        
         <div>
           {
             posts.map(post => 
